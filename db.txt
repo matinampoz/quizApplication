@@ -1,0 +1,70 @@
+DROP SCHEMA IF EXISTS `quiz`;
+CREATE SCHEMA `quiz`;
+use `quiz`;
+
+create table `category`
+(`id` int not null auto_increment,
+`name` varchar(100) not null,
+PRIMARY KEY(`id`));
+
+create table `question`
+(`id` int not null auto_increment, 
+`question_title` varchar(200) not null, 
+`option1` varchar(200) not null,
+`option2` varchar(200) not null,
+`option3` varchar(200) not null,
+`option4` varchar(200) not null,
+`right_answer` varchar(200) not null,
+`difficulty_level` varchar(10) not null,
+`category_id` int not null,
+PRIMARY KEY(`id`),
+FOREIGN KEY(`category_id`) REFERENCES `category`(`id`))
+AUTO_INCREMENT=1;
+
+INSERT INTO `category` (name) VALUES('Πρόβλημα');
+INSERT INTO `category` (name) VALUES('Αλγόριθμος - Δομή ακολουθίας');
+INSERT INTO `category` (name) VALUES('Ανάλυση προβλημάτων');
+INSERT INTO `category` (name) VALUES('Προγραμματιστικά Περιβάλλοντα');
+INSERT INTO `category` (name) VALUES('Δομή Επιλογής και Επανάληψης');
+INSERT INTO `category` (name) VALUES('Δομές δεδομένων - Πίνακες');
+INSERT INTO `category` (name) VALUES('Διάρει και Βασίλευε');
+INSERT INTO `category` (name) VALUES('Άλλες δομές δεδομένων');
+INSERT INTO `category` (name) VALUES('Υποπρογράμματα');
+INSERT INTO `category` (name) VALUES('Εκσφαλμάτωση');
+INSERT INTO `category` (name) VALUES('Σύγχρονα Προγραμματιστικά Περιβάλλοντα');
+
+INSERT INTO `question` (`question_title`, `option1`, 
+`option2`, `option3`, `option4`, `right_answer`, 
+`difficulty_level`, `category_id`) 
+VALUES('Μία εντολή «Αν…τότε» περιλαμβάνει κάποια', 'συνθήκη', 'ακολουθία', 'ανάθεση', 'επανάληψη', 'συνθήκη', 'μέτρια', '5');
+INSERT INTO `question` (`question_title`, `option1`, 
+`option2`, `option3`, `option4`, `right_answer`, 
+`difficulty_level`, `category_id`) 
+VALUES('Με την ερώτηση "Αν (Α mod 2=0)", εννοούμε εν γένει, ότι επιθυμούμε να εξετάσουμε αν', 
+'o Α είναι περιττός', 'ο Α είναι μικρότερος του 2', 
+'ο Α ισούται με 2', 'ο Α διαιρείται ακριβώς με το 2', 
+'ο Α διαιρείται ακριβώς με το 2', 'μέτρια', '2');
+INSERT INTO `question` (`question_title`, `option1`, 
+`option2`, `option3`, `option4`, `right_answer`, 
+`difficulty_level`, `category_id`) 
+VALUES('Οι εμφωλευμένες δομές περιλαμβάνουν συνδυασμό:', 'συνθήκης και εκτύπωσης', 'διαφόρων αλγοριθμικών δομών', 
+'συνθήκης και ανάγνωσης', 'ανάγνωσης και εκτύπωσης', 'διαφόρων αλγοριθμικών δομών', 'εύκολη', '5');
+INSERT INTO `question` (`question_title`, `option1`, 
+`option2`, `option3`, `option4`, `right_answer`, 
+`difficulty_level`, `category_id`) 
+VALUES('Η λογική των επαναληπτικών διαδικασιών εφαρμόζεται στις περιπτώσεις όπου:', 
+'μία ακολουθία εντολών πρέπει να εφαρμοσθεί σε δύο περιπτώσεις', 'μία ακολουθία εντολών πρέπει να εφαρμοσθεί κάποιες φορές', 
+'υπάρχει απαίτηση να ληφθεί μία απόφαση με βάση κάποια συνθήκη', 'υπάρχουν δύο συνθήκες που πρέπει να ισχύουν η μία μετά την άλλη', 
+'μία ακολουθία εντολών πρέπει να εφαρμοσθεί κάποιες φορές', 'ευκολη', '5');
+
+
+select *
+from category;
+
+select *
+from question;
+
+/*INSERT INTO `question` (`question_title`, `option1`, 
+`option2`, `option3`, `option4`, `right_answer`, 
+`difficulty_level`, `category_id`) 
+VALUES('', '', '', '', '', '', '', '');*/
